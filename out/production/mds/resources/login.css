@@ -1,0 +1,51 @@
+#root {
+
+ -fx-background-image: url("/resources/background_login_small.jpg");
+-fx-border-color: #663F15;
+ -fx-border-radius: 0;
+-fx-padding: 10 10 10 10;
+-fx-background-radius: 20;
+}
+
+ 
+
+#bp {
+-fx-background-image: url("/resources/background_login_big.jpg");
+
+
+}
+
+ 
+
+#btnLogin {
+
+    -fx-background-radius: 10, 10, 9, 8;
+    -fx-padding: 10px 120px 10px 120px;
+    -fx-background-color: linear-gradient(orange, orangered );
+
+}
+
+
+#fbLogin {
+
+    -fx-background-radius: 10, 10, 9, 8;
+    -fx-padding: 10px 54px 10px 54px;
+    -fx-background-color: linear-gradient(#5D79B4, #0039B5 );
+
+}
+
+ 
+
+#text {
+
+ -fx-fill:  linear-gradient(orange , orangered);
+
+}
+
+#dim {
+
+    -fx-max-width: 290;
+
+
+}
+
