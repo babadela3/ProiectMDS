@@ -26,15 +26,6 @@
 }
 
 
-#fbLogin {
-
-    -fx-background-radius: 10, 10, 9, 8;
-    -fx-padding: 10px 54px 10px 54px;
-    -fx-background-color: linear-gradient(#5D79B4, #0039B5 );
-
-}
-
- 
 
 #text {
 
@@ -42,8 +33,13 @@
 
 }
 
-#dim {
-
+#textField {
+    -fx-text-box-border: transparent;
+    -fx-background-color: #FDF2DE;
+    -fx-text-fill:  #663F15;
+    -fx-border-radius: 0;
+    -fx-padding: 5 5 5 5;
+    -fx-background-radius: 5;
     -fx-max-width: 290;
 
 

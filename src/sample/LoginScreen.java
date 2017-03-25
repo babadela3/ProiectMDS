@@ -22,8 +22,6 @@ import javafx.stage.Stage;
 public class LoginScreen extends Application {
 
 
-
-
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -33,6 +31,7 @@ public class LoginScreen extends Application {
         primaryStage.setTitle("JavaFX 2 Login");
         BorderPane bp = new BorderPane();
         bp.setPadding(new Insets(120,300,160,300));
+        bp.setPrefSize(1600,870);
 
         //Adding HBox
 
@@ -66,17 +65,23 @@ public class LoginScreen extends Application {
 
 
 
-        Label lblTitle = new Label("   Blackjack");
-        lblTitle.setFont(Font.font("Script MT Bold", FontWeight.BOLD, 50));
+        Label lblTitle = new Label(" Blackjack");
+        lblTitle.setFont(Font.font("Script MT Bold", FontWeight.BOLD, 60));
         lblTitle.setTextFill(Color.web("663F15"));
 
+        Label textUsername = new Label("Username");
+        textUsername.setFont(Font.font("Courier New", FontWeight.BOLD, 16));
+        textUsername.setTextFill(Color.web("663F15"));
+
         final TextField txtUserName = new TextField();
-        txtUserName.setPromptText("E-mail");
         txtUserName.setFocusTraversable(false);
         txtUserName.setFont(Font.font("Courier New", FontWeight.NORMAL, 15));
 
+        Label textPassword = new Label("Password");
+        textPassword.setFont(Font.font("Courier New", FontWeight.BOLD, 16));
+        textPassword.setTextFill(Color.web("663F15"));
+
         final PasswordField pf = new PasswordField();
-        pf.setPromptText("Password");
         pf.setFocusTraversable(false);
         pf.setFont(Font.font("Courier New", FontWeight.NORMAL, 15));
 
@@ -95,14 +100,6 @@ public class LoginScreen extends Application {
         Button btnLogin = new Button("Login");
         btnLogin.setTextFill(Color.web("ffffff"));
         btnLogin.setFont(Font.font("Courier New", FontWeight.BOLD, 16));
-
-        Label optionText = new Label("                  or");
-        optionText.setFont(Font.font("Courier New", FontWeight.NORMAL, 13));
-        optionText.setTextFill(Color.web("663F15"));
-
-        Button fbLogin = new Button("Login with Facebook");
-        fbLogin.setTextFill(Color.web("ffffff"));
-        fbLogin.setFont(Font.font("Courier New", FontWeight.BOLD, 16));
 
         GridPane gridPaneSignUp = new GridPane();
         gridPaneSignUp.setPrefSize(1000,500);
@@ -124,12 +121,12 @@ public class LoginScreen extends Application {
 
         //Adding Nodes to GridPane layout
         gridPane.add(lblTitle, 64, 4);
-        gridPane.add(txtUserName, 64, 17);
+        gridPane.add(textUsername, 64, 13);
+        gridPane.add(txtUserName, 64, 15);
+        gridPane.add(textPassword, 64, 17);
         gridPane.add(pf, 64, 19);
-        gridPane.add(gridPaneForgotPassword,64,20);
+        gridPane.add(gridPaneForgotPassword,64,21);
         gridPane.add(btnLogin, 64, 32);
-        gridPane.add(optionText, 64, 34);
-        gridPane.add(fbLogin, 64, 36);
         gridPane.add(gridPaneSignUp,64,50);
 
 
@@ -138,12 +135,12 @@ public class LoginScreen extends Application {
 
         //Add ID's to Nodes
         bp.setId("bp");
-        txtUserName.setId("dim");
-        pf.setId("dim");
+        txtUserName.setId("textField");
+        pf.setId("textField");
         gridPane.setId("root");
         btnLogin.setId("btnLogin");
         text.setId("text");
-        fbLogin.setId("fbLogin");
+
 
 
         //Actions for buttons and texts
@@ -152,13 +149,6 @@ public class LoginScreen extends Application {
             @Override public void handle(ActionEvent e) {
                 System.out.println("Login");
             }
-        });
-
-        fbLogin.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                System.out.println("Login with Facebook");
-            }
-
         });
 
         forgotPassword.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -172,20 +162,6 @@ public class LoginScreen extends Application {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 System.out.println("Sign Up");
-            }
-        });
-
-        fbLogin.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent me) {
-                primaryStage.getScene().setCursor(Cursor.HAND); //Change cursor to hand
-            }
-        });
-
-        fbLogin.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent me) {
-                primaryStage.getScene().setCursor(Cursor.DEFAULT); //Change cursor to hand
             }
         });
 
