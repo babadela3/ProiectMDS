@@ -124,6 +124,20 @@
      -fx-background-radius: 10;
 }
 
+#textField {
+    -fx-text-box-border: transparent;
+    -fx-background-color: #FDF2DE;
+    -fx-text-fill:  #663F15;
+    -fx-background-radius: 5;
+
+}
+
+#textOptions {
+    -fx-text-fill:  #663F15;
+}
+
+
+
 #btnTables{
     -fx-background-color: #FCE7C2;
     -fx-text-fill:  #663F15;

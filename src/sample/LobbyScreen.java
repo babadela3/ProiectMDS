@@ -3,6 +3,7 @@ package sample;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -502,6 +503,194 @@ public class LobbyScreen extends Application {
             @Override public void handle(ActionEvent e) {
                 buttonRanking.setId("btnRanking");
                 buttonTables.setId("btnTables");
+                menu.getChildren().clear();
+                menu.setSpacing(5);
+                menu.setStyle(null);
+                tableInitialization(menu,"#E3BE7F");
+                tableInitialization(menu,"#E7B663");
+                tableInitialization(menu,"#E3BE7F");
+                tableInitialization(menu,"#E7B663");
+                tableInitialization(menu,"#E3BE7F");
+
+            }
+        });
+
+        buttonCreateTable.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                menu.getChildren().clear();
+                menu.setSpacing(0);
+                menu.setStyle("-fx-background-color: #E7B663;");
+                buttonRanking.setId("btnRanking");
+                buttonTables.setId("btnRanking");
+
+
+                GridPane createTablePane = new GridPane();
+                createTablePane.setPrefSize(610,254);
+                createTablePane.setPadding(new Insets( 0,0 ,0 ,0 ));
+                createTablePane.setHgap(10);
+                createTablePane.setVgap(0);
+
+                GridPane messagePane = new GridPane();
+                messagePane.setPrefSize(595,25);
+                messagePane.setHgap(10);
+                messagePane.setVgap(5);
+                messagePane.setStyle("-fx-background-color: #BA4A00;");
+
+
+
+                Label textRanking = new Label("Create My Table");
+                textRanking.setFocusTraversable(false);
+                textRanking.setStyle("-fx-text-fill:  #ffffff;");
+                textRanking.setFont(Font.font("Courier New", FontWeight.BOLD, 18));
+
+
+
+
+                messagePane.add(textRanking,2,0);
+
+
+                VBox createTableOptionsPane = new VBox();
+                createTableOptionsPane.setPadding(new Insets(10,0,0,30));
+                createTableOptionsPane.setPrefSize(428,280);
+
+                HBox tableName = new HBox();
+                tableName.setPrefSize(450,20);
+                tableName.setPadding(new Insets(20,0,0,0));
+
+                Label textTableName = new Label("Table Name");
+                textTableName.setFocusTraversable(false);
+                textTableName.setPrefSize(170,17);
+                textTableName.setId("textOptions");
+
+                final TextField txtTableName = new TextField();
+                txtTableName.setFocusTraversable(false);
+                txtTableName.setFont(Font.font("Courier New", FontWeight.NORMAL, 13));
+                txtTableName.setPrefWidth(200);
+                txtTableName.setId("textField");
+
+                tableName.getChildren().add(textTableName);
+                tableName.getChildren().add(txtTableName);
+
+                HBox tableNumberPlayers = new HBox();
+                tableNumberPlayers.setPrefSize(450,20);
+
+                Label textNumberPlayers = new Label("Maxs Seats");
+                textNumberPlayers.setFocusTraversable(false);
+                textNumberPlayers.setPrefSize(170,17);
+                textNumberPlayers.setId("textOptions");
+
+                ChoiceBox choiceNumberPlayers = new ChoiceBox(FXCollections.observableArrayList(
+                        "1 player","2 players", "3 players", "4 players","5 players","6 players","7 players")
+                );
+                choiceNumberPlayers.setPrefWidth(200);
+                choiceNumberPlayers.setId("textField");
+
+                tableNumberPlayers.getChildren().add(textNumberPlayers);
+                tableNumberPlayers.getChildren().add(choiceNumberPlayers);
+
+                HBox tableMove = new HBox();
+                tableMove.setPrefSize(450,20);
+
+                Label textMoveTime = new Label("Move Time");
+                textMoveTime.setFocusTraversable(false);
+                textMoveTime.setPrefSize(170,17);
+                textMoveTime.setId("textOptions");
+
+                ChoiceBox choiceMoveText = new ChoiceBox(FXCollections.observableArrayList(
+                        "15 seconds", "30 seconds", "45 seconds")
+                );
+                choiceMoveText.setPrefWidth(200);
+                choiceMoveText.setId("textField");
+
+
+                tableMove.getChildren().add(textMoveTime);
+                tableMove.getChildren().add(choiceMoveText);
+
+                CheckBox checkPrivateTable = new CheckBox("Private Table");
+                checkPrivateTable.setPadding(new Insets(0,0,5,0));
+                checkPrivateTable.setId("textOptions");
+
+                HBox tablePasswordPrivateTable = new HBox();
+                tablePasswordPrivateTable.setPrefSize(450,20);
+
+
+                Label textPasswordPrivateTable = new Label("Password");
+                textPasswordPrivateTable.setFocusTraversable(false);
+                textPasswordPrivateTable.setPrefSize(170,17);
+                textPasswordPrivateTable.setId("textOptions");
+
+                final PasswordField txtPasswordPrivateTable = new PasswordField();
+                txtPasswordPrivateTable.setFocusTraversable(false);
+                txtPasswordPrivateTable.setFont(Font.font("Courier New", FontWeight.NORMAL, 13));
+                txtPasswordPrivateTable.setPrefWidth(200);
+                txtPasswordPrivateTable.setId("textField");
+
+                tablePasswordPrivateTable.getChildren().add(textPasswordPrivateTable);
+                tablePasswordPrivateTable.getChildren().add(txtPasswordPrivateTable);
+
+                VBox buttonsOptionPane = new VBox();
+                buttonsOptionPane.setPrefSize(595,75);
+                buttonsOptionPane.setPadding(new Insets(10,0,0,0));
+                buttonsOptionPane.setSpacing(10);
+//                buttonsOptionPane.setStyle("-fx-background-color: #E7B663;");
+
+                VBox noteCreateTable = new VBox();
+                noteCreateTable.setPadding(new Insets(0,0,0,0));
+
+
+                Label textNote = new Label("        Note: private tables will be closed automatically in 24 hours");
+                textNote.setFocusTraversable(false);
+                textNote.setId("textOptions");
+
+                noteCreateTable.getChildren().add(textNote);
+
+                GridPane buttonsPane = new GridPane();
+                buttonsPane.setPrefSize(595,75);
+                buttonsPane.setHgap(10);
+                buttonsPane.setVgap(5);
+
+                Button createTableButton = new Button("Create Table");
+                createTableButton.setPrefSize(90,10);
+                createTableButton.setId("btnEditProfile");
+
+                Button cancelButton = new Button("Cancel");
+                cancelButton.setPrefSize(90,10);
+                cancelButton.setId("btnLogout");
+
+                buttonsPane.add(createTableButton,5,0);
+                buttonsPane.add(cancelButton,14,0);
+
+
+                buttonsOptionPane.getChildren().add(noteCreateTable);
+                buttonsOptionPane.getChildren().add(buttonsPane);
+
+
+
+
+
+                createTableOptionsPane.setSpacing(5);
+                createTableOptionsPane.getChildren().add(tableName);
+                createTableOptionsPane.getChildren().add(tableNumberPlayers);
+                createTableOptionsPane.getChildren().add(tableMove);
+                createTableOptionsPane.getChildren().add(checkPrivateTable);
+                createTableOptionsPane.getChildren().add(tablePasswordPrivateTable);
+                createTableOptionsPane.getChildren().add(buttonsOptionPane);
+
+                HBox imagePane = new HBox();
+                imagePane.setPadding(new Insets(5,0,-10,30));
+
+                ImageView image = new ImageView(new Image(getClass().getResourceAsStream("/resources/try.png"),250,250,true,true));
+
+                imagePane.getChildren().add(image);
+
+
+                createTablePane.add(createTableOptionsPane,0,0);
+                createTablePane.add(imagePane,1,0);
+
+
+                menu.getChildren().add(messagePane);
+                menu.getChildren().add(createTablePane);
+
 
             }
         });
@@ -511,6 +700,18 @@ public class LobbyScreen extends Application {
 
                 buttonRanking.setId("btnTables");
                 buttonTables.setId("btnRanking");
+                menu.getChildren().clear();
+                menu.setSpacing(1);
+                menu.setStyle(null);
+                rankingTopInitialization(menu, "#BA4A00");
+                rankInitialization(menu,"#E7B663",1,"Blake Shelton",301);
+                rankInitialization(menu,"#E3BE7F",2,"Gwen Stefani",202);
+                rankInitialization(menu,"#E7B663",3,"Alicia Keys",176);
+                rankInitialization(menu,"#E3BE7F",4,"Katy Perry",125);
+                rankInitialization(menu,"#E7B663",5,"Pharell Williams",89);
+                rankInitialization(menu,"#E3BE7F",6,"Adam Levine",82);
+                rankInitialization(menu,"#E7B663",7,"Christina Aguilera",22);
+                rankInitialization(menu,"#E3BE7F",8,"Justin Timberlake",16);
 
             }
         });
@@ -801,6 +1002,107 @@ public class LobbyScreen extends Application {
 
 
         messagePane.add(tablesPane,0,0);
+
+
+
+        discution.getChildren().add(messagePane);
+
+    }
+
+    void rankInitialization(VBox discution, String color,int rank,String name,int wins){
+        GridPane messagePane = new GridPane();
+        //messagePane.setPrefWidth(595);
+        messagePane.setPrefSize(250,30);
+        messagePane.setHgap(10);
+        messagePane.setVgap(5);
+        messagePane.setPadding(new Insets(5,0,0,0));
+        messagePane.setStyle("-fx-background-color: " + color + ";");
+
+        Label textRanking = new Label("" + rank);
+        textRanking.setFocusTraversable(false);
+        textRanking.setStyle("-fx-text-fill:  #663F15;");
+        textRanking.setFont(Font.font("Courier New", FontWeight.BOLD, 16));
+
+        Label textName = new Label(name);
+        textName.setPrefWidth(255);
+        textName.setFocusTraversable(false);
+        textName.setStyle("-fx-text-fill:  #663F15;");
+        textName.setFont(Font.font("Courier New", FontWeight.BOLD, 16));
+
+        ImageView image1;
+
+        if(wins < 50){
+            image1 = new ImageView(new Image(getClass().getResourceAsStream("/resources/brown1.png"),100,100,true,true));
+        }
+        else {
+                if (wins < 100) {
+                    image1 = new ImageView(new Image(getClass().getResourceAsStream("/resources/brown2.png"), 100, 100, true, true));
+                }
+                else {
+                        if(wins < 200){
+                            image1 = new ImageView(new Image(getClass().getResourceAsStream("/resources/orange2.png"), 100, 100, true, true));
+                        }
+                        else{
+                            image1 = new ImageView(new Image(getClass().getResourceAsStream("/resources/brown.png"), 100, 100, true, true));
+                        }
+                }
+            }
+
+        image1.setFitHeight(18);
+        image1.setFitWidth(18);
+
+
+        Label textWins = new Label("" + wins);
+        textWins.setFocusTraversable(false);
+        textWins.setStyle("-fx-text-fill:  #663F15;");
+        textWins.setFont(Font.font("Courier New", FontWeight.BOLD, 16));
+
+        messagePane.add(textRanking,2,0);
+        messagePane.add(textName,9,0);
+        messagePane.add(image1,10,0);
+        messagePane.add(textWins,20,0);
+
+
+        discution.getChildren().add(messagePane);
+
+    }
+
+    void rankingTopInitialization(VBox discution, String color){
+        GridPane messagePane = new GridPane();
+        //messagePane.setPrefWidth(595);
+        messagePane.setPrefSize(610,30);
+        messagePane.setHgap(10);
+        messagePane.setVgap(5);
+        messagePane.setStyle("-fx-background-color: " + color + ";");
+
+        Label textRanking = new Label("Rank");
+        textRanking.setFocusTraversable(false);
+        textRanking.setStyle("-fx-text-fill:  #ffffff;");
+        textRanking.setFont(Font.font("Courier New", FontWeight.BOLD, 16));
+
+        Label textName = new Label("Name");
+        textName.setFocusTraversable(false);
+        textName.setStyle("-fx-text-fill:  #ffffff;");
+        textName.setFont(Font.font("Courier New", FontWeight.BOLD, 16));
+
+        Label textLevel = new Label("Level");
+        textLevel.setFocusTraversable(false);
+        textLevel.setStyle("-fx-text-fill:  #ffffff;");
+        textLevel.setFont(Font.font("Courier New", FontWeight.BOLD, 16));
+
+        Label textWins = new Label("Wins");
+        textWins.setFocusTraversable(false);
+        textWins.setStyle("-fx-text-fill:  #ffffff;");
+        textWins.setFont(Font.font("Courier New", FontWeight.BOLD, 16));
+
+
+        messagePane.add(textRanking,1,0);
+        messagePane.add(textName,6,0);
+        messagePane.add(textLevel,27,0);
+        messagePane.add(textWins,35,0);
+
+
+
 
 
 
